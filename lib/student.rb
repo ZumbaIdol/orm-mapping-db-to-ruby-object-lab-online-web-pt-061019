@@ -111,11 +111,9 @@ def self.students_below_12th_grade
   
   def self.all_students_in_grade_x(grade)
     sql = <<-SQL
-      SELECT students.name COUNT(grade)
+      SELECT * 
       FROM students
       WHERE student.grade = ?
-      GROUP BY students.name
-      ORDER BY COUNT(grade) DESC
     SQL
     DB[:conn].execute(sql, x).map do |row|
       self.new_from_db(row)
