@@ -111,7 +111,7 @@ def self.students_below_12th_grade
   
   def self.all_students_in_grade_x(grade)
     sql = <<-SQL
-      SELECT name, grade
+      SELECT students.name COUNT(name)
       FROM students
       WHERE student.grade = ?
     SQL
