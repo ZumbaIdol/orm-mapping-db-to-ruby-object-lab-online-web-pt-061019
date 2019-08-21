@@ -114,6 +114,8 @@ def self.students_below_12th_grade
       SELECT students.name COUNT(name)
       FROM students
       WHERE student.grade = ?
+      GROUP BY students.name
+      ORDER BY 
     SQL
     DB[:conn].execute(sql, x).map do |row|
       self.new_from_db(row)
